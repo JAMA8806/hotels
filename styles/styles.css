@@ -1,0 +1,184 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+header {
+  background-image: url(./assets/hotel-landscape.jpg);
+  width: 100%;
+  height: 52rem;
+  background-size: 100% 100%;
+  padding: 5rem;
+  background-position-y: -20rem;
+  color: white;
+  background-repeat: no-repeat;
+}
+
+h1 {
+  font-family: "Pacifico", cursive;
+  font-size: 6rem;
+  color: white;
+}
+
+.filter-container {
+  margin: 3rem 0;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.filter-container select.filter-countries {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  padding-left: 2rem;
+  height: 2rem;
+  min-width: 10rem;
+  background-image: url(./assets/marker.png);
+  background-position: 0.3rem center;
+  background-repeat: no-repeat;
+  border-radius: 5px;
+  background-size: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: "Roboto", sans-serif;
+  opacity: 0.7;
+  border: none;
+}
+.filter-container select.filter-countries:hover {
+  opacity: 0.9;
+  font-size: 1.2rem;
+}
+.filter-container .date-from {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  padding-left: 2rem;
+  height: 2rem;
+  min-width: 10rem;
+  background-image: url(./assets/arrow-up-right-from-square.png);
+  background-position: 0.3rem center;
+  background-repeat: no-repeat;
+  border-radius: 5px;
+  background-size: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: "Roboto", sans-serif;
+  opacity: 0.7;
+  border: none;
+}
+.filter-container .date-from:hover {
+  opacity: 0.9;
+  font-size: 1.2rem;
+}
+.filter-container .date-to {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  padding-left: 2rem;
+  height: 2rem;
+  min-width: 10rem;
+  background-image: url(./assets/arrow-down-to-square.png);
+  background-position: 0.3rem center;
+  background-repeat: no-repeat;
+  border-radius: 5px;
+  background-size: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: "Roboto", sans-serif;
+  opacity: 0.7;
+  border: none;
+}
+.filter-container .date-to:hover {
+  opacity: 0.9;
+  font-size: 1.2rem;
+}
+.filter-container select.filter-prices {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  padding-left: 2rem;
+  height: 2rem;
+  min-width: 10rem;
+  background-image: url(./assets/sack-dollar.png);
+  background-position: 0.3rem center;
+  background-repeat: no-repeat;
+  border-radius: 5px;
+  background-size: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: "Roboto", sans-serif;
+  opacity: 0.7;
+  border: none;
+}
+.filter-container select.filter-prices:hover {
+  opacity: 0.9;
+  font-size: 1.2rem;
+}
+.filter-container select.filter-sizes {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  padding-left: 2rem;
+  height: 2rem;
+  min-width: 10rem;
+  background-image: url(./assets/sort-size-down.png);
+  background-position: 0.3rem center;
+  background-repeat: no-repeat;
+  border-radius: 5px;
+  background-size: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: "Roboto", sans-serif;
+  opacity: 0.7;
+  border: none;
+}
+.filter-container select.filter-sizes:hover {
+  opacity: 0.9;
+  font-size: 1.2rem;
+}
+.filter-container button.clear-btn {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  padding-left: 2rem;
+  height: 2rem;
+  min-width: 10rem;
+  background-image: none;
+  background-position: 0.3rem center;
+  background-repeat: no-repeat;
+  border-radius: 5px;
+  background-size: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: "Roboto", sans-serif;
+  opacity: 0.7;
+  border: none;
+  border: 2px solid darkgrey;
+  background-color: rgb(47, 46, 48);
+  color: white;
+  opacity: 1;
+  padding: 0;
+}
+.filter-container button.clear-btn:hover {
+  opacity: 0.9;
+  font-size: 1.2rem;
+}
+
+h2 {
+  font-family: "Pacifico", cursive;
+  font-weight: 100;
+  font-size: xx-large;
+  padding-bottom: 1.5rem;
+}
+
+header p {
+  font-size: "Roboto", sans-serif;
+  font-weight: 300;
+  font-size: 1.5rem;
+}/*# sourceMappingURL=styles.css.map */

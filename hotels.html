@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:ital,wght@0,300;1,300;1,400&display=swap');
+      </style>
+      <link rel="stylesheet" href="./styles/styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>Book it</h1>
+        <div class="filter-container">
+            <select class="filter filter-countries" name="countries" id="countries">
+                <option value="All">All countries</option>
+                <option value="Argentina">Argentina</option>
+                <option value="Brasil">Brasil</option>
+                <option value="Colombia">Colombia</option>
+                <option value="Uruguay">Uruguay</option>
+            </select>
+            <input class="date-from" type="date">
+            <input class="date-to" type="date">
+            <select class="filter filter-prices" name="prices" id="prices">
+                <option value="All"><i class="fi fi-rs-sack-dollar"></i>All prices</option>
+                <option value="0-99">0-99</option>
+                <option value="100-999">100-999</option>
+                <option value="1000-10000">1000-10000</option>
+            </select>
+            <select class="filter filter-sizes" name="sizes" id="sizes">
+                <option value="All">All sizes</option>
+                <option value="Large">Large</option>
+                <option value="Medium">Medium</option>
+                <option value="Small">Small</option>
+            </select>
+            <button value="clear" class="clear-btn" type="reset">Clear</button>            
+        </div>
+        <h2>We have found for you...</h2>
+        <p>All sizes hotels of all category prices, in all countries.</p>
+    </header>
+</body>
+</html>

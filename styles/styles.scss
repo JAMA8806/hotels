@@ -6,6 +6,7 @@
 $main-font:'Roboto', sans-serif;
 $Style-font:'Pacifico', cursive;
 
+
 @mixin formato-filtros($icon: url(./assets/marker.png)){
     appearance: none;
     padding-left: 2rem;
@@ -191,6 +192,7 @@ header p{
             background: rgba(0, 0, 0, 0.459);
             background: radial-gradient(224.24% 668.5% at 14.41% -14.14%, rgba(0,0,0,0.57) 44.5%, rgba(255,255,255,0) 67.11%);;
             z-index: -1;
+            border-radius: 10px;
         }
         }
                 

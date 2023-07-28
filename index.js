@@ -1,28 +1,28 @@
-import {hotelsInfo} from "./hotels-info.js";
+import {hotelsInfo} from "./src/hotels-info.js";
 
 
 const cardsContainer = document.getElementById("cardsContainer")
 // cardsContainer.innerHTML = "test";
 // cardsContainer.innerText = "probando texto"
-console.log(cardsContainer);
+// console.log(cardsContainer);
 
 // Se crean las variables correspondientes a los elementos a utilizar.
 
-const h2 = document.createElement("h2");
-const img = document.createElement("img");
-const p = document.createElement("p");
-const button = document.createElement("button");
+// const h2 = document.createElement("h2");
+// const img = document.createElement("img");
+// const p = document.createElement("p");
+// const button = document.createElement("button");
 
 // se extrae la información y almacena en variable data.
 const info = await hotelsInfo();
 const data = await info.json();
-console.log(data);
+// console.log(data);
 
 data.forEach((object) => {
-    console.log(object.country);
-    console.log(object.photo);
+    // console.log(object.country);
+    // console.log(object.photo);
     const hotelCard = document.createElement("div");
-    hotelCard.className = "hotel-card";
+    hotelCard.className = `hotel-card ${object.country}`;
     const url = object.photo;
     hotelCard.style.backgroundImage = `url(${url})`;
     cardsContainer.appendChild(hotelCard);
@@ -39,24 +39,25 @@ data.forEach((object) => {
     iconImg.className = "card-img";
     switch (object.country) {
         case "Argentina":
-            iconImg.setAttribute("scr", "./styles/assets/flags/argentina.png");
+            iconImg.setAttribute("src", "./styles/assets/flags/argentina.png");
             iconImg.setAttribute("alt", "argentina-icon");            
             break;    
         case "Brasil":
-            iconImg.setAttribute("scr", "./styles/assets/flags/brasil.png");
+            iconImg.setAttribute("src", "./styles/assets/flags/brasil.png");
             iconImg.setAttribute("alt", "brasil-icon");
             break;    
         case "Uruguay":
-            iconImg.setAttribute("scr", "./styles/assets/flags/uruguay.png");
+            iconImg.setAttribute("src", "./styles/assets/flags/uruguay.png");
             iconImg.setAttribute("alt", "uruguay-icon");
             break;    
         case "Chile":
-            iconImg.setAttribute("scr", "./styles/assets/flags/chile.png");
+            iconImg.setAttribute("src", "./styles/assets/flags/chile.png");
             iconImg.setAttribute("alt", "chile-icon");
             break;    
         default:
             break;
     }
+
     iconText.appendChild(iconImg);
     
     const country = document.createElement("p");
@@ -80,14 +81,31 @@ data.forEach((object) => {
     button.innerText = "Book it!";
     button.className = "card-btn";
     priceBtn.appendChild(button);
-
-
-
-
-
-
-    
     
 });
+
+// llamo y almaceno un HTMLCollection con todas las cards creadas
+// Hay que trasnformar en HTMLCollection en un Array iterable.
+const collection = document.getElementsByClassName("hotel-card");
+const cardElement = Array.from(collection);
+console.log(cardElement);
+
+// Ahora vamos a obtener el elemento del primer filtro y crear la función para filtrar cards por este parametro.
+const countries = document.getElementById("countries");
+countries.addEventListener("change", function() {
+    const country = countries.value;
+    console.log(country);
+    
+    const hideCard = cardElement.filter(card => !card.classList.contains(country));
+    console.log(hideCard);
+
+    hideCard.forEach(cards=> {
+        cards.style.display = "none";                
+    });
+    
+})
+
+
+
 
 

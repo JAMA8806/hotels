@@ -16,13 +16,14 @@ const cardsContainer = document.getElementById("cardsContainer")
 // se extrae la información y almacena en variable data.
 const info = await hotelsInfo();
 const data = await info.json();
-// console.log(data);
+console.log(data);
 
 data.forEach((object) => {
     // console.log(object.country);
     // console.log(object.photo);
     const hotelCard = document.createElement("div");
-    hotelCard.className = `hotel-card ${object.country}`;
+    hotelCard.className = `hotel-card ${object.country} ${object.price}`;
+    hotelCard.id = object.name;
     const url = object.photo;
     hotelCard.style.backgroundImage = `url(${url})`;
     cardsContainer.appendChild(hotelCard);
@@ -93,19 +94,58 @@ console.log(cardElement);
 // Ahora vamos a obtener el elemento del primer filtro y crear la función para filtrar cards por este parametro.
 const countries = document.getElementById("countries");
 countries.addEventListener("change", function() {
+    cardElement.forEach(cards=> {
+        cards.style.display = "none";               
+    });
+    
     const country = countries.value;
     console.log(country);
     
-    const hideCard = cardElement.filter(card => !card.classList.contains(country));
+    const hideCard = cardElement.filter(card => card.classList.contains(country));
     console.log(hideCard);
 
     hideCard.forEach(cards=> {
-        cards.style.display = "none";                
+        cards.style.display = "inline-block";               
     });
+    
+    if (country=="All") {
+        cardElement.forEach(cards => {
+            cards.style.display = "inline-block";               
+        });
+    }
     
 })
 
+const prices = document.getElementById("prices");
+prices.addEventListener("change", function() {
+    
+    cardElement.forEach(cards=> {
+        cards.style.display = "none";               
+    });
+    
+    const price = prices.value;
+    console.log(price);
+    
+    const hideCard = cardElement.filter(card => card.classList.contains(price));
+    console.log(hideCard);
 
+    hideCard.forEach(cards=> {
+        cards.style.display = "inline-block";               
+    });
+    
+    if (price=="All") {
+        cardElement.forEach(cards => {
+            cards.style.display = "inline-block";               
+        });
+    }
+    
+})
+console.log(cardElement[2]);
+
+const dateFrom = document.getElementById("dateFrom");
+dateFrom.addEventListener("change",function(){
+    console.log(dateFrom.value);
+})
 
 
 

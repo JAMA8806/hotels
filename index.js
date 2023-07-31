@@ -130,6 +130,7 @@ prices.addEventListener("change", filter);
 datFrom.addEventListener("change", filter);    
 datTo.addEventListener("change", filter);    
 sizes.addEventListener("change", filter);   
+clear.addEventListener("click", reset);   
 
 function filter() {
     country = countries.value;
@@ -173,4 +174,25 @@ function filter() {
         console.log(cards.name, countryFil, priceFil, sizeFil,fromFil,toFil);
     });
 }
+
+function reset() {
+    countries.selectedIndex = 0;
+    prices.selectedIndex = 0;
+    sizes.selectedIndex = 0;
+    datFrom.value = "";
+    datTo.value = "";
+    
+    datFrom.setAttribute("placeholder", "dd/mm/aaaa");
+    datTo.setAttribute("placeholder", "dd/mm/aaaa");
+    
+    console.log("reset");
+
+    console.log(country,price,from,to,size);
+    console.log(countries,prices,datFrom,datTo,sizes);
+
+    cardElement.forEach(cards => {
+        cards.style.display = "inline-block";
+    });
+}
+
 

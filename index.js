@@ -169,7 +169,7 @@ function filter() {
         }    
         
         if (countryFil && priceFil && sizeFil && fromFil && toFil) {
-            cards.style.display = "inline-block";            
+            cards.style.display = "flex";            
         }
         console.log(cards.name, countryFil, priceFil, sizeFil,fromFil,toFil);
     });
@@ -191,7 +191,7 @@ function reset() {
     console.log(countries,prices,datFrom,datTo,sizes);
 
     cardElement.forEach(cards => {
-        cards.style.display = "inline-block";
+        cards.style.display = "flex";
     });
 }
 

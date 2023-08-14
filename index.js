@@ -19,14 +19,17 @@ const data = await info.json();
 console.log(data);
 
 data.forEach((object) => {
+    // console.log(typeof(object.availabilityTo ), typeof(object.availabilityFrom));
+    let availability = (object.availabilityTo - object.availabilityFrom)/(1000*60*60*24);
+    // console.log(availability);
     // console.log(object.country);
     // console.log(object.photo);
     const hotelCard = document.createElement("div");
     hotelCard.className = `hotel-card ${object.country} ${object.price}`;
     hotelCard.setAttribute("data-country", object.country);
     hotelCard.setAttribute("data-price", object.price );
-    hotelCard.setAttribute("data-from", object.availabilityFrom);
-    hotelCard.setAttribute("data-To", object.availabilityTo );
+    hotelCard.setAttribute("data-availability", availability);
+    // hotelCard.setAttribute("data-To", object.availabilityTo );
     // se crea una función para determinar el tamaño entre small(0-10rooms) medium(11 a 20) y large (20 o mas-)
     function size(object){
         if (object.rooms<10) {
@@ -108,9 +111,6 @@ data.forEach((object) => {
 // Hay que trasnformar en HTMLCollection en un Array iterable.
 const cardElement = document.querySelectorAll(".hotel-card");
 // const cardElement = Array.from(collection);
-console.log(cardElement[0].dataset.from, cardElement[0].dataset.to);
-const cfd = new Date (parseInt(cardElement[0].dataset.from, 10));
-// console.log(cfd, new Date (parseInt(cardElement[0].dataset.to, 10)) );
 
 const countries = document.getElementById("countries");
 const prices = document.getElementById("prices");
@@ -135,11 +135,14 @@ clear.addEventListener("click", reset);
 function filter() {
     country = countries.value;
     price = prices.value;
-    from = new Date(datFrom.value);
+    from = new Date( datFrom.value);
     to = new Date(datTo.value);
+    let mili = to - from;
+    let filterDays = mili/(1000 * 60 * 60 * 24);
     size = sizes.value;
     console.log(from, to);
-    console.log(datFrom.value, datTo.value);
+    console.log(filterDays);
+    // console.log(datFrom.value, datTo.value);
     
     // Se evaluan las tarjetas creadas para ver de acuerdo a los atributos asignados si cumple la condición de los filtros
     cardElement.forEach(cards => {
@@ -148,30 +151,39 @@ function filter() {
         let countryFil = cards.dataset.country === country || country == "All";
         let priceFil = cards.dataset.price === price || price == "All";
         let sizeFil = cards.dataset.rooms == size || size == "All";
-        let fromFil = true;
-        let toFil = true;
-        let cardsFrom = new Date(parseInt(cards.dataset.from, 10));
-        let cardsTo = new Date(parseInt(cards.dataset.to, 10));
-        
-        if (cardsFrom>from) {
-            fromFil = true;
-        } else if (cardsFrom<from) {
-            fromFil = false;
+        let cardDaysAvailable = cards.dataset.availability ;
+        console.log(`CardsDays: ${cardDaysAvailable}`);
+        console.log(`FilterDays: ${filterDays}`);
+        // let fromFil = true;
+        // let toFil = true;
+        let availFil = true;
+
+        if (filterDays <= cardDaysAvailable) {
+            availFil = true;
         } else {
-            fromFil = true;
+            availFil = false;
         }
-        if (cardsTo<to) {
-            toFil = true;
-        } else if (cardsTo>to) {
-            toFil = false;
-        } else {
-            toFil = true;
-        }    
         
-        if (countryFil && priceFil && sizeFil && fromFil && toFil) {
+        
+        // if (cardsFrom>from) {
+        //     fromFil = true;
+        // } else if (cardsFrom<from) {
+        //     fromFil = false;
+        // } else {
+        //     fromFil = true;
+        // }
+        // if (cardsTo<to) {
+        //     toFil = true;
+        // } else if (cardsTo>to) {
+        //     toFil = false;
+        // } else {
+        //     toFil = true;
+        // }    
+        
+        if (countryFil && priceFil && sizeFil && availFil ) {
             cards.style.display = "flex";            
         }
-        console.log(cards.name, countryFil, priceFil, sizeFil,fromFil,toFil);
+         console.log(cards.name, countryFil, priceFil, sizeFil,availFil);
     });
 }
 

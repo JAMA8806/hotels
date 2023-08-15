@@ -21,16 +21,18 @@
                 <option value="All">All countries</option>
                 <option value="Argentina">Argentina</option>
                 <option value="Brasil">Brasil</option>
-                <option value="Colombia">Colombia</option>
+                <option value="Chile">Chile</option>
                 <option value="Uruguay">Uruguay</option>
             </select>
-            <input class="date-from" type="date">
-            <input class="date-to" type="date">
+            <input class="date-from" id="dateFrom" type="date">
+            <input class="date-to" id="dateTo" type="date">
             <select class="filter filter-prices" name="prices" id="prices">
                 <option value="All"><i class="fi fi-rs-sack-dollar"></i>All prices</option>
-                <option value="0-99">0-99</option>
-                <option value="100-999">100-999</option>
-                <option value="1000-10000">1000-10000</option>
+                <option value="1">$</option>
+                <option value="2">$$</option>
+                <option value="3">$$$</option>
+                <option value="4">$$$$</option>
+            </select>
             </select>
             <select class="filter filter-sizes" name="sizes" id="sizes">
                 <option value="All">All sizes</option>
@@ -44,93 +46,10 @@
         <p>All sizes hotels of all category prices, in all countries.</p>
     </header>
     <section class="section section1">
-        <div class="cards-container">
-            <div class="hotel-card">
-                <h2>La Bamba de Areco</h2>
-                <div class="icon-text">
-                    <img class="card-img" src="./styles/assets/flags/argentina.png" alt="argentina-icon">
-                    <p> Argentina </p>
-                </div>
-                <div class="price-btn">
-                    <p>11 rooms - $$$$</p>
-                    <p class="card-description">
-                        La Bamba de Areco is located in San Antonio de Areco, in the heart of the pampas. It is one of the oldest rooms in Argentina, recently restored to offer its guests all the comfort and colonial splendor.
-                    </p>
-                    <button class="card-btn">Book it!</button>
-                </div>
-            </div>
-            <div class="hotel-card">
-                <h2>La Bamba de Areco</h2>
-                <div class="icon-text">
-                    <img class="card-img" src="./styles/assets/flags/argentina.png" alt="argentina-icon">
-                    <p> Argentina </p>
-                </div>
-                <div class="price-btn">
-                    <p>11 rooms - $$$$</p>
-                    <p class="card-description">
-                        La Bamba de Areco is located in San Antonio de Areco, in the heart of the pampas. It is one of the oldest rooms in Argentina, recently restored to offer its guests all the comfort and colonial splendor.
-                    </p>
-                    <button class="card-btn">Book it!</button>
-                </div>
-            </div>
-            <div class="hotel-card">
-                <h2>La Bamba de Areco</h2>
-                <div class="icon-text">
-                    <img class="card-img" src="./styles/assets/flags/argentina.png" alt="argentina-icon">
-                    <p> Argentina </p>
-                </div>
-                <div class="price-btn">
-                    <p>11 rooms - $$$$</p>
-                    <p class="card-description">
-                        La Bamba de Areco is located in San Antonio de Areco, in the heart of the pampas. It is one of the oldest rooms in Argentina, recently restored to offer its guests all the comfort and colonial splendor.
-                    </p>
-                    <button class="card-btn">Book it!</button>
-                </div>
-            </div>
-            <div class="hotel-card">
-                <h2>La Bamba de Areco</h2>
-                <div class="icon-text">
-                    <img class="card-img" src="./styles/assets/flags/argentina.png" alt="argentina-icon">
-                    <p> Argentina </p>
-                </div>
-                <div class="price-btn">
-                    <p>11 rooms - $$$$</p>
-                    <p class="card-description">
-                        La Bamba de Areco is located in San Antonio de Areco, in the heart of the pampas. It is one of the oldest rooms in Argentina, recently restored to offer its guests all the comfort and colonial splendor.
-                    </p>
-                    <button class="card-btn">Book it!</button>
-                </div>
-            </div>
-            <div class="hotel-card">
-                <h2>La Bamba de Areco</h2>
-                <div class="icon-text">
-                    <img class="card-img" src="./styles/assets/flags/argentina.png" alt="argentina-icon">
-                    <p> Argentina </p>
-                </div>
-                <div class="price-btn">
-                    <p>11 rooms - $$$$</p>
-                    <p class="card-description">
-                        La Bamba de Areco is located in San Antonio de Areco, in the heart of the pampas. It is one of the oldest rooms in Argentina, recently restored to offer its guests all the comfort and colonial splendor.
-                    </p>
-                    <button class="card-btn">Book it!</button>
-                </div>
-            </div>
-            <div class="hotel-card">
-                <h2>La Bamba de Areco</h2>
-                <div class="icon-text">
-                    <img class="card-img" src="./styles/assets/flags/argentina.png" alt="argentina-icon">
-                    <p> Argentina </p>
-                </div>
-                <div class="price-btn">
-                    <p>11 rooms - $$$$</p>
-                    <p class="card-description">
-                        La Bamba de Areco is located in San Antonio de Areco, in the heart of the pampas. It is one of the oldest rooms in Argentina, recently restored to offer its guests all the comfort and colonial splendor.
-                    </p>
-                    <button class="card-btn">Book it!</button>
-                </div>
-            </div>
-            
+        <div class="cards-container" id="cardsContainer">
+                                   
         </div>
     </section>
 </body>
+<script type="module" src="./index.js"></script>
 </html>

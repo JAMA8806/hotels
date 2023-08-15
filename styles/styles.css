@@ -11,6 +11,8 @@ body {
   color: white;
   font-weight: 300;
   font-family: "Roboto", sans-serif;
+  max-width: 100rem;
+  margin: auto;
 }
 
 header {
@@ -207,7 +209,7 @@ header p {
   justify-content: end;
   width: 30vw;
   height: 20rem;
-  background-image: url(./assets/pics/pool-night-1521893.jpg);
+  max-width: 50%;
   border-radius: 10px;
   opacity: 0.9;
   position: relative;
@@ -302,4 +304,5 @@ header p {
   background: rgba(0, 0, 0, 0.459);
   background: radial-gradient(224.24% 668.5% at 14.41% -14.14%, rgba(0, 0, 0, 0.57) 44.5%, rgba(255, 255, 255, 0) 67.11%);
   z-index: -1;
+  border-radius: 10px;
 }/*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,32 @@
+{
+  "name": "reto-3-hoteles",
+  "version": "1.0.0",
+  "description": "This is a project where we apply what we have learned regarding HTML, CSS and specially JavaScript. Here, we applied JavaScript code to manipulatee the DOM",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "live-server",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JAMA8806/hotels.git"
+  },
+  "keywords": [
+    "HTML",
+    "CSS",
+    "javaScript",
+    "NodeJs",
+    "NPM",
+    "DOM"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JAMA8806/hotels/issues"
+  },
+  "homepage": "https://github.com/JAMA8806/hotels#readme",
+  "dependencies": {
+    "live-server": "^1.2.2"
+  }
+}

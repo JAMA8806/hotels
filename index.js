@@ -19,10 +19,32 @@ const data = await info.json();
 console.log(data);
 
 data.forEach((object) => {
+    // console.log(typeof(object.availabilityTo ), typeof(object.availabilityFrom));
+    let availability = (object.availabilityTo - object.availabilityFrom)/(1000*60*60*24);
+    // console.log(availability);
     // console.log(object.country);
     // console.log(object.photo);
     const hotelCard = document.createElement("div");
     hotelCard.className = `hotel-card ${object.country} ${object.price}`;
+    hotelCard.setAttribute("data-country", object.country);
+    hotelCard.setAttribute("data-price", object.price );
+    hotelCard.setAttribute("data-availability", availability);
+    // hotelCard.setAttribute("data-To", object.availabilityTo );
+    // se crea una función para determinar el tamaño entre small(0-10rooms) medium(11 a 20) y large (20 o mas-)
+    function size(object){
+        if (object.rooms<10) {
+            hotelCard.setAttribute("data-rooms", "10");
+            
+        } else if (object.rooms>=11 && object.rooms<20) {
+                hotelCard.setAttribute("data-rooms", "20");
+            } else{
+                hotelCard.setAttribute("data-rooms", "30");            
+            }
+        
+    } ;
+
+    size(object);
+    
     hotelCard.id = object.name;
     const url = object.photo;
     hotelCard.style.backgroundImage = `url(${url})`;
@@ -87,65 +109,102 @@ data.forEach((object) => {
 
 // llamo y almaceno un HTMLCollection con todas las cards creadas
 // Hay que trasnformar en HTMLCollection en un Array iterable.
-const collection = document.getElementsByClassName("hotel-card");
-const cardElement = Array.from(collection);
-console.log(cardElement);
+const cardElement = document.querySelectorAll(".hotel-card");
+// const cardElement = Array.from(collection);
 
-// Ahora vamos a obtener el elemento del primer filtro y crear la función para filtrar cards por este parametro.
 const countries = document.getElementById("countries");
-countries.addEventListener("change", function() {
-    cardElement.forEach(cards=> {
-        cards.style.display = "none";               
-    });
-    
-    const country = countries.value;
-    console.log(country);
-    
-    const hideCard = cardElement.filter(card => card.classList.contains(country));
-    console.log(hideCard);
-
-    hideCard.forEach(cards=> {
-        cards.style.display = "inline-block";               
-    });
-    
-    if (country=="All") {
-        cardElement.forEach(cards => {
-            cards.style.display = "inline-block";               
-        });
-    }
-    
-})
-
 const prices = document.getElementById("prices");
-prices.addEventListener("change", function() {
+const datFrom = document.getElementById("dateFrom");
+const datTo = document.getElementById("dateTo");
+const sizes = document.getElementById("sizes");
+const clear = document.getElementById("clearbtn");
+
+let country = "";
+let price = "";
+let from = "";
+let to = "";
+let size = "";
+
+countries.addEventListener("change", filter);    
+prices.addEventListener("change", filter);    
+datFrom.addEventListener("change", filter);    
+datTo.addEventListener("change", filter);    
+sizes.addEventListener("change", filter);   
+clear.addEventListener("click", reset);   
+
+function filter() {
+    country = countries.value;
+    price = prices.value;
+    from = new Date( datFrom.value);
+    to = new Date(datTo.value);
+    let mili = to - from;
+    let filterDays = mili/(1000 * 60 * 60 * 24);
+    size = sizes.value;
+    console.log(from, to);
+    console.log(filterDays);
+    // console.log(datFrom.value, datTo.value);
     
-    cardElement.forEach(cards=> {
-        cards.style.display = "none";               
+    // Se evaluan las tarjetas creadas para ver de acuerdo a los atributos asignados si cumple la condición de los filtros
+    cardElement.forEach(cards => {
+        cards.style.display = "none";  
+        
+        let countryFil = cards.dataset.country === country || country == "All";
+        let priceFil = cards.dataset.price === price || price == "All";
+        let sizeFil = cards.dataset.rooms == size || size == "All";
+        let cardDaysAvailable = cards.dataset.availability ;
+        console.log(`CardsDays: ${cardDaysAvailable}`);
+        console.log(`FilterDays: ${filterDays}`);
+        // let fromFil = true;
+        // let toFil = true;
+        let availFil = true;
+
+        if (filterDays <= cardDaysAvailable) {
+            availFil = true;
+        } else {
+            availFil = false;
+        }
+        
+        
+        // if (cardsFrom>from) {
+        //     fromFil = true;
+        // } else if (cardsFrom<from) {
+        //     fromFil = false;
+        // } else {
+        //     fromFil = true;
+        // }
+        // if (cardsTo<to) {
+        //     toFil = true;
+        // } else if (cardsTo>to) {
+        //     toFil = false;
+        // } else {
+        //     toFil = true;
+        // }    
+        
+        if (countryFil && priceFil && sizeFil && availFil ) {
+            cards.style.display = "flex";            
+        }
+         console.log(cards.name, countryFil, priceFil, sizeFil,availFil);
     });
-    
-    const price = prices.value;
-    console.log(price);
-    
-    const hideCard = cardElement.filter(card => card.classList.contains(price));
-    console.log(hideCard);
+}
 
-    hideCard.forEach(cards=> {
-        cards.style.display = "inline-block";               
+function reset() {
+    countries.selectedIndex = 0;
+    prices.selectedIndex = 0;
+    sizes.selectedIndex = 0;
+    datFrom.value = "";
+    datTo.value = "";
+    
+    datFrom.setAttribute("placeholder", "dd/mm/aaaa");
+    datTo.setAttribute("placeholder", "dd/mm/aaaa");
+    
+    console.log("reset");
+
+    console.log(country,price,from,to,size);
+    console.log(countries,prices,datFrom,datTo,sizes);
+
+    cardElement.forEach(cards => {
+        cards.style.display = "flex";
     });
-    
-    if (price=="All") {
-        cardElement.forEach(cards => {
-            cards.style.display = "inline-block";               
-        });
-    }
-    
-})
-console.log(cardElement[2]);
-
-const dateFrom = document.getElementById("dateFrom");
-dateFrom.addEventListener("change",function(){
-    console.log(dateFrom.value);
-})
-
+}
 
 
